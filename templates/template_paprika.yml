@@ -1,0 +1,25 @@
+---
+name:
+
+servings: [0, 1]
+source:
+source_url:
+prep_time:
+cook_time:
+categories:
+  - Dinner
+  - Sides
+notes: |
+  This template is just a skeleton to demonstrate the basic structure of a Paprika-style recipe. 
+
+  Useful as a skeleton for transcribing new recipes.
+
+ingredients:
+  - One human head.
+  - (1 tbsp) Salt
+  - (2 cups) Love
+
+directions:
+  - Preheat oven to 350 degrees.
+  - Add cheese.
+  - Cook until cheesy.

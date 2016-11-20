@@ -1,0 +1,41 @@
+{#- Jinja2 template for converting a pyprika Recipe object to Markdown -#}
+# {{ recipe.name }}
+
+{% if recipe.prep_time %}
+**Prep time:** {{recipe.prep_time.amount}} {{recipe.prep_time.unit}}
+{% endif %}
+{%- if recipe.cook_time %}
+**Cook time:** {{recipe.cook_time.amount}} {{recipe.cook_time.unit}}
+{% endif %}
+{%- if recipe.servings %}
+**servings:** {{recipe.servings[0]}}-{{recipe.servings[-1]}}
+{% endif %}
+
+{% if recipe.notes -%}
+{{recipe.notes}}
+{%- endif %}
+
+## Ingredients
+
+{% for i in recipe.ingredients -%}
+{#- Ingredients can have a quantity or not, so check if it's there to -#}
+{#- determine the best way to format it. -#}
+{% if i.quantity -%}
+- {{ i.quantity.amount }} {{ i.quantity.unit }} {{ i.label}}
+{% else -%}
+- {{ i.label }}
+{% endif %}
+{%- endfor %}
+
+## Directions
+
+{% for d in recipe.directions -%}
+{{loop.index}}.  {{d}}
+{% endfor %}
+
+{#- If source is provided with a URL, make it a link. -#}
+{% if recipe.source and recipe.source_url %}
+###### Source: [{{recipe.source}}]({{recipe.source_url}})
+{% elif recipe.source %}
+###### Source: {{recipe.source}}
+{% endif -%}
